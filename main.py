@@ -5,7 +5,13 @@ import ipaddress
 import os
 import tldextract
 from wee import crackingxui
+import platform
 
+def clear_console():
+    if platform.system() == "Windows":
+        os.system("cls")
+    else:
+        os.system("clear")
 def is_ip(host):
     try:
         ipaddress.ip_address(host)
@@ -136,17 +142,16 @@ if __name__ == "__main__":
     import time
     try:
         while True:
-            os.system("cls" if os.name == "nt" else "clear")
-            os.system("cls")
+            clear_console()
             print("Script Run\nPlease Wait\n")
             print("Creator : Kilidshekan@gmail.com\n")
 
             passlist_url = select_passlist()
-            os.system("cls")
+            clear_console()
             source_urls = select_source_advanced()
-            os.system("cls")         
+            clear_console()         
             if len(source_urls) == 1 and isinstance(source_urls[0], tuple) and source_urls[0][0] == "manual":
-                os.system("cls")     
+                clear_console()     
                 try:
                     manual_url = source_urls[0][1]
                     print(f"[*] Cracking manual target directly: {manual_url}")
@@ -165,7 +170,7 @@ if __name__ == "__main__":
                                 raise    
             else:
                 filter_iran = ask_country_filter()
-                os.system("cls")
+                clear_console()
 
                 all_valid_targets = []
                 for src_url in source_urls:
@@ -186,6 +191,7 @@ if __name__ == "__main__":
                                 choice = input("\n[!] Ctrl+C detected. Skip this target? (y/n) [default: y]: ").strip().lower()
                                 if choice in ["", "y", "yes"]:
                                     print("[*] Skipping target...\n")
+                                     counteringurlinprocess += 1
                                     continue
                                 else:
                                     print("[*] Continuing with current target...\n")
