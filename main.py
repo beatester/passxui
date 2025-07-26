@@ -191,7 +191,7 @@ if __name__ == "__main__":
                                 choice = input("\n[!] Ctrl+C detected. Skip this target? (y/n) [default: y]: ").strip().lower()
                                 if choice in ["", "y", "yes"]:
                                     print("[*] Skipping target...\n")
-                                     counteringurlinprocess += 1
+                                    counteringurlinprocess += 1
                                     continue
                                 else:
                                     print("[*] Continuing with current target...\n")
